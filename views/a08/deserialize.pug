@@ -1,0 +1,17 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A08', 'Deserialización insegura')
+  if payloadHint
+    p.text-secondary Ejemplo de payload benigno codificado (JSON simple, sin marca de función):
+    pre= payloadHint
+  form.mb-3(method="POST" action="/a08/deserialize")
+    .mb-3
+      label.form-label Payload (base64)
+      textarea.form-control(name="data" rows="4")
+    button.btn.btn-primary(type="submit") Deserializar
+  if error
+    .alert.alert-danger= error
+  if result
+    pre.mt-2= result

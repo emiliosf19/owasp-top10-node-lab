@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  .d-flex.justify-content-between.align-items-center.mb-3
+    h4 Solución: #{lab}
+    a.btn.btn-outline-secondary.btn-sm(href="/") ← Volver al índice
+  .card
+    .card-body!= content

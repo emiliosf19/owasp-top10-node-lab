@@ -1,0 +1,14 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A08', 'Fallos de Integridad de Software y Datos')
+  .card
+    .card-body
+      h5.card-title Concepto
+      p.card-text Si el servidor deserializa datos que tú controlas, tienes ejecución de código.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li Ve a #[a(href="/a08/generate-payload") /a08/generate-payload], escribe el comando #[code id] y copia el base64. Luego en #[a(href="/a08/deserialize") /a08/deserialize] pégalo. ¿El servidor ejecutó el comando?
+        li Prueba comandos: #[code ls /], #[code env], #[code cat /etc/passwd]. ¿Qué variables de entorno con secretos encuentras?
+        li Ve a #[a(href="/a08/update") /a08/update] — observa que #[code sha256: null] y #[code signature: null]. Aplica la actualización. ¿Qué verificación se omitió?

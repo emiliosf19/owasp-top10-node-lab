@@ -1,0 +1,13 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A08', 'Generador de payload (fines defensivos)')
+  form.mb-3(method="POST" action="/a08/generate-payload")
+    .mb-3
+      label.form-label Comando a ejecutar en el servidor
+      input.form-control(name="command" value=command placeholder="id")
+    button.btn.btn-primary(type="submit") Generar
+  if payload
+    p.text-secondary Pega esto en #[a(href="/a08/deserialize") /a08/deserialize]:
+    pre= payload

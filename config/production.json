@@ -1,0 +1,7 @@
+{
+  "port": 8080,
+  "env": "production",
+  "session": {
+    "secret": "CHANGE_ME_VIA_ENV_VAR_IN_REAL_DEPLOYMENTS"
+  }
+}

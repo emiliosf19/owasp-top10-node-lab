@@ -1,0 +1,27 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A03', 'Instalador de plugins sin verificación')
+  +resultAlert('warning', message)
+  form.mb-3(method="POST" action="/a03/install-plugin")
+    .mb-3
+      label.form-label Plugin
+      select.form-select(name="plugin")
+        each plugin, name in pluginRegistry
+          option(value=name)= `${name} (v${plugin.version})`
+    button.btn.btn-primary(type="submit") Instalar
+  table.table.table-sm
+    thead
+      tr
+        th Plugin
+        th Versión
+        th Hash
+        th URL
+    tbody
+      each plugin, name in pluginRegistry
+        tr
+          td= name
+          td= plugin.version
+          td #{plugin.hash || 'null'}
+          td: code= plugin.url

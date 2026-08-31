@@ -1,0 +1,19 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A06', 'Actualizar perfil (asignación masiva)')
+  +resultAlert('info', message)
+  if user
+    p.text-secondary Sesión activa como #[strong= user.username]
+    form(method="POST" action="/a06/update-profile")
+      input(type="hidden" name="username" value=user.username)
+      .mb-3
+        label.form-label Correo
+        input.form-control(name="email" value=user.email)
+      .mb-3
+        label.form-label.text-warning Campo extra (intenta 'role' o 'credits')
+        input.form-control(name="role" placeholder="admin")
+      button.btn.btn-primary(type="submit") Guardar
+  else
+    p Debes #[a(href="/a06/login") iniciar sesión] primero.

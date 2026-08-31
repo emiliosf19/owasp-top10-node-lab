@@ -1,0 +1,29 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A01', 'Control de Acceso Roto')
+
+  .card.mb-3
+    .card-body
+      h5.card-title Concepto
+      p.card-text La aplicación no verifica que un usuario solo pueda acceder a sus propios datos u operaciones.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li
+          | Ve a #[a(href="/a01/login") /a01/login], inicia sesión como #[strong alice] (sin contraseña).
+          | Tu perfil está en #[code /a01/profile/1] — cambia el número a #[code /2] y #[code /3]. ¿Qué datos ves?
+        li Estando como alice (rol: user), navega directamente a #[a(href="/a01/admin") /a01/admin]. ¿Qué debería haber pasado?
+        li Tu pedido es el #1. Visita #[code /a01/orders/2] y #[code /a01/orders/3]. ¿A quién pertenecen?
+
+  .card
+    .card-body
+      h6.card-title Usuarios de práctica
+      table.table.table-sm
+        thead
+          tr: th username
+        tbody
+          tr: td alice
+          tr: td bob
+          tr: td admin
+      a.btn.btn-primary(href="/a01/login") Ir a login →

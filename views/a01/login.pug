@@ -1,0 +1,13 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A01', 'Iniciar sesión')
+  +resultAlert('danger', error)
+  .card.mx-auto(style="max-width:420px")
+    .card-body
+      form(method="POST" action="/a01/login")
+        .mb-3
+          label.form-label Usuario (sin contraseña — solo fines de práctica)
+          input.form-control(name="username" placeholder="alice, bob o admin" required)
+        button.btn.btn-primary.w-100(type="submit") Entrar

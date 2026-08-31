@@ -1,0 +1,21 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A01', 'Panel de administración (sin verificación de rol)')
+  p.text-secondary Sesión activa como #[strong= currentUser.username] (rol: #{currentUser.role})
+  .alert.alert-warning Esta pantalla no debería ser visible si tu rol no es #[strong admin].
+  table.table.table-sm
+    thead
+      tr
+        th ID
+        th Usuario
+        th Rol
+        th Identificación nacional
+    tbody
+      each u in users
+        tr
+          td= u.id
+          td= u.username
+          td= u.role
+          td: code= u.national_id

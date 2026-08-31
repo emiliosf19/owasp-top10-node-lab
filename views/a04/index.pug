@@ -1,0 +1,16 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A04', 'Fallos Criptográficos')
+  .card
+    .card-body
+      h5.card-title Concepto
+      p.card-text MD5 no es cifrado de contraseñas. Base64 no es cifrado.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li Ve a #[a(href="/a04/hashes") /a04/hashes], copia los hashes y rómpelos en #[a(href="https://crackstation.net" target="_blank") crackstation.net]. ¿Cuánto tardó?
+        li En #[a(href="/a04/store") /a04/store] codifica #[code password=Admin123] y decodifícalo. O en terminal: #[code echo "cGFzc3dvcmQ9QWRtaW4xMjM=" | base64 -d]
+        li
+          | Predice el token de bob sin iniciar sesión:
+          pre: code node -e "console.log(require('crypto').createHash('md5').update('bob:static_salt_2024').digest('hex'))"

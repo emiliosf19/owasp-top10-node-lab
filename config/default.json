@@ -1,0 +1,15 @@
+{
+  "port": 3000,
+  "env": "development",
+  "session": {
+    "secret": "lab-dev-secret-NOT-FOR-PRODUCTION",
+    "cookieMaxAgeMs": 3600000
+  },
+  "database": {
+    "file": "lab.db"
+  },
+  "thirdParty": {
+    "mapsApiKey": "AIzaFAKE_MAPS_KEY_FOR_TRAINING_0000",
+    "smtpPassword": "EmailP@ss2024"
+  }
+}

@@ -1,0 +1,52 @@
+:root { color-scheme: dark; }
+body { background: #0d1117; color: #c9d1d9; }
+
+h1, h2, h3, h4, h5, h6 { color: #e6edf3; }
+p, li, td, th, label, .form-label, .form-check-label,
+.card-text, .card-title, .card-body { color: #c9d1d9; }
+strong, b { color: #e6edf3; }
+small, .small { color: #8b949e; }
+.text-secondary { color: #8b949e !important; }
+.text-muted { color: #6e7681 !important; }
+
+a { color: #58a6ff; }
+a:hover { color: #79c0ff; }
+
+.navbar { background: #161b22 !important; border-bottom: 1px solid #30363d; }
+
+.card { background: #161b22; border: 1px solid #30363d; }
+.card-header { background: #21262d; border-bottom: 1px solid #30363d; color: #c9d1d9; }
+.lab-card:hover { border-color: #58a6ff; cursor: pointer; }
+
+code, pre { background: #0d1117; color: #f0883e; border: 1px solid #30363d; }
+pre { padding: .75rem; border-radius: .375rem; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
+
+.form-control, .form-select, textarea.form-control {
+  background: #0d1117; border-color: #30363d; color: #c9d1d9;
+}
+.form-control:focus, .form-select:focus {
+  background: #0d1117; border-color: #58a6ff; color: #c9d1d9; box-shadow: none;
+}
+::placeholder { color: #6e7681 !important; opacity: 1; }
+.form-check-input { background-color: #0d1117; border-color: #30363d; }
+.form-check-input:checked { background-color: #238636; border-color: #238636; }
+option { background: #161b22; color: #c9d1d9; }
+
+.alert { border-width: 1px; }
+.alert-dark { background: #21262d; border-color: #30363d; color: #c9d1d9; }
+.alert-danger { background: #2d1117; border-color: #da3633; color: #ff7b72; }
+.alert-warning { background: #27200f; border-color: #9e6a03; color: #d29922; }
+.alert-success { background: #0d2818; border-color: #238636; color: #3fb950; }
+.alert-info { background: #0d1f2d; border-color: #1f6feb; color: #79c0ff; }
+.alert-secondary { background: #21262d; border-color: #30363d; color: #8b949e; }
+
+.table { color: #c9d1d9; border-color: #30363d; }
+.table > :not(caption) > * > * {
+  background-color: transparent; color: #c9d1d9; border-color: #30363d;
+}
+.table thead th { color: #8b949e; border-color: #30363d; }
+
+.btn-outline-secondary { color: #8b949e; border-color: #30363d; }
+.btn-outline-secondary:hover { background: #21262d; color: #c9d1d9; border-color: #58a6ff; }
+.btn-outline-light { color: #c9d1d9; border-color: #30363d; }
+.btn-outline-light:hover { background: #21262d; color: #e6edf3; }

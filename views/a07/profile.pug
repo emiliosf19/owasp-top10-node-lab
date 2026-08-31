@@ -1,0 +1,14 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A07', 'Perfil (autenticado por cookie)')
+  p session_id recibido: #[code= sid]
+  table.table.table-sm
+    tbody
+      tr
+        td Usuario
+        td= user.username
+      tr
+        td Rol
+        td= user.role

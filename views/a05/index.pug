@@ -1,0 +1,14 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A05', 'Inyección')
+  .card
+    .card-body
+      h5.card-title Concepto
+      p.card-text Las consultas construidas con concatenación de strings permiten que el atacante cambie la lógica.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li En #[a(href="/a05/login") /a05/login] usa Usuario #[code admin] / Contraseña #[code ' OR '1'='1]. ¿Qué devuelve?
+        li En #[a(href="/a05/search") /a05/search] escribe: #[code ' UNION SELECT id,username,password,role FROM a05_users--]. ¿Cuál es la contraseña del admin?
+        li En #[a(href="/a05/ping") /a05/ping] escribe #[code 127.0.0.1; id] y luego #[code 127.0.0.1; cat /etc/passwd]. ¿Qué nivel de acceso obtuviste?

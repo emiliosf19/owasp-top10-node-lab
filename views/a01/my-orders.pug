@@ -1,0 +1,18 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A01', 'Mis pedidos (referencia correcta)')
+  p.text-secondary Esta vista SÍ filtra por #[code user_id = session.a01User.id] — compárala con #[code /a01/orders/:id].
+  table.table.table-sm
+    thead
+      tr
+        th ID
+        th Artículo
+        th Monto
+    tbody
+      each o in orders
+        tr
+          td= o.id
+          td= o.item
+          td $#{o.amount.toFixed(2)}

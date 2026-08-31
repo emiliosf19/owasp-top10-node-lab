@@ -1,0 +1,26 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A05', 'Búsqueda de productos vulnerable a SQL Injection')
+  form.mb-3(method="POST" action="/a05/search")
+    .input-group
+      input.form-control(name="term" placeholder="' UNION SELECT id,username,password,role FROM a05_users--")
+      button.btn.btn-primary(type="submit") Buscar
+  if query
+    pre= query
+  if products.length
+    table.table.table-sm.mt-2
+      thead
+        tr
+          th 1
+          th 2
+          th 3
+          th 4
+      tbody
+        each p in products
+          tr
+            td= p.id
+            td= p.name
+            td= p.price
+            td= p.category

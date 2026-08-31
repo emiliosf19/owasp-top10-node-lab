@@ -1,0 +1,22 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A04', 'Herramienta de hash')
+  form.mb-3(method="POST" action="/a04/hash-tool")
+    .mb-3
+      label.form-label Valor
+      input.form-control(name="value" required)
+    button.btn.btn-primary(type="submit") Calcular
+  if result
+    table.table.table-sm
+      tbody
+        tr
+          td MD5
+          td: code= result.md5
+        tr
+          td SHA1
+          td: code= result.sha1
+        tr
+          td SHA256
+          td: code= result.sha256

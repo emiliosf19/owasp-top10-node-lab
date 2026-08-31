@@ -1,0 +1,28 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A09', 'Transferencia de registro — log inseguro')
+  +resultAlert('info', message)
+  form.mb-3(method="POST" action="/a09/transfer-bad")
+    .row.g-2
+      .col-auto
+        input.form-control(name="username" placeholder="alice")
+      .col-auto
+        input.form-control(name="recordId" placeholder="identificador sensible, p. ej. CURP-ALIC900101HDFR01")
+      .col-auto
+        button.btn.btn-primary(type="submit") Transferir
+  table.table.table-sm
+    thead
+      tr
+        th Usuario
+        th record_id
+        th Acción
+        th Fecha
+    tbody
+      each r in records
+        tr
+          td= r.username
+          td: code= r.record_id
+          td= r.action
+          td= r.timestamp

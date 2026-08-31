@@ -1,0 +1,20 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A07', 'Login sin protección contra fuerza bruta')
+  if result
+    .alert.alert-danger= result.message
+  .card.mx-auto(style="max-width:420px")
+    .card-body
+      form(method="POST" action="/a07/login")
+        .mb-3
+          label.form-label Usuario
+          input.form-control(name="username" placeholder="alice / bob / admin")
+        .mb-3
+          label.form-label Contraseña
+          input.form-control(type="password" name="password")
+        .form-check.mb-3
+          input.form-check-input(type="checkbox" name="remember" value="1" id="remember")
+          label.form-check-label(for="remember") Recordarme
+        button.btn.btn-primary.w-100(type="submit") Entrar

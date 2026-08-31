@@ -1,0 +1,23 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= (typeof title !== 'undefined' ? title : 'Lab OWASP Top 10:2025 — Node.js')
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet")
+    link(href="/stylesheets/style.css" rel="stylesheet")
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark
+      .container-fluid
+        a.navbar-brand.fw-bold(href="/")
+          span.text-danger ⚠
+          |  Lab OWASP Top 10:2025 · Node.js/Express
+        .d-flex
+          a.btn.btn-sm.btn-outline-secondary(href="https://owasp.org/Top10/2025/" target="_blank") Docs OWASP ↗
+
+    .container.mt-4
+      if flash
+        .alert(class=`alert-${flash.type}` role="alert")= flash.message
+      block content
+
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js")

@@ -1,0 +1,6 @@
+node_modules/
+db/lab.db
+logs/*.log
+npm-debug.log*
+.DS_Store
+*.pid

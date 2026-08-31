@@ -1,0 +1,16 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A02', 'Login con credenciales por defecto')
+  +resultAlert(message && message.startsWith('LOGIN SUCCESS') ? 'success' : 'danger', message)
+  .card.mx-auto(style="max-width:420px")
+    .card-body
+      form(method="POST" action="/a02/login")
+        .mb-3
+          label.form-label Usuario
+          input.form-control(name="username" required)
+        .mb-3
+          label.form-label Contraseña
+          input.form-control(type="password" name="password" required)
+        button.btn.btn-primary.w-100(type="submit") Entrar

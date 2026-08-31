@@ -1,0 +1,20 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A06', 'Diseño Inseguro')
+  .card
+    .card-body
+      h5.card-title Concepto
+      p.card-text El problema no está en un bug de código, sino en el diseño del flujo de negocio.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li
+          | Calcula el token de reset del admin sin usar el formulario:
+          pre: code node -e "console.log(require('crypto').createHash('md5').update('admincorp2024').digest('hex'))"
+          | Ve a #[a(href="/a06/reset-password") /a06/reset-password], ingresa admin, el token calculado y una nueva contraseña.
+        li En #[a(href="/a06/cart") /a06/cart] selecciona "Laptop 14\"" ($999.99) con cantidad #[code -10]. ¿Cuál es el total?
+        li
+          | Inicia sesión como alice y desde terminal:
+          pre: code curl -X POST http://localhost:3000/a06/update-profile -d "role=admin&credits=99999"
+          | ¿Cambió tu rol?

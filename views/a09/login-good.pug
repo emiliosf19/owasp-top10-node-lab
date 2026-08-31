@@ -1,0 +1,17 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A09', 'Login — log seguro')
+  if result
+    .alert(class=`alert-${result.status === 'success' ? 'success' : 'danger'}`)= result.status === 'success' ? `Bienvenido, ${result.user}` : 'Credenciales inválidas'
+  .card.mx-auto(style="max-width:420px")
+    .card-body
+      form(method="POST" action="/a09/login-good")
+        .mb-3
+          label.form-label Usuario
+          input.form-control(name="username")
+        .mb-3
+          label.form-label Contraseña
+          input.form-control(type="password" name="password")
+        button.btn.btn-primary.w-100(type="submit") Entrar

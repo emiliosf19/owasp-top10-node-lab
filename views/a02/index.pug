@@ -1,0 +1,19 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A02', 'Mala Configuración de Seguridad')
+  .card.mb-3
+    .card-body
+      h5.card-title Concepto
+      p.card-text El servidor expone información sensible por una mala configuración, no por un fallo de lógica.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li #[code GET /a02/config] — encuentra el secreto de sesión.
+        li #[code GET /a02/backup.cfg] — extrae la contraseña de BD y las llaves de terceros.
+        li Ve a #[a(href="/a02/login") /a02/login] y prueba #[code admin/admin] y #[code operator/operator123].
+        li #[code curl -I http://localhost:3000/a02/] — ¿qué tecnologías revela el servidor en las cabeceras?
+      .d-flex.gap-2.mt-3
+        a.btn.btn-sm.btn-outline-light(href="/a02/config") /config
+        a.btn.btn-sm.btn-outline-light(href="/a02/backup.cfg") /backup.cfg
+        a.btn.btn-sm.btn-outline-light(href="/a02/api/data") /api/data

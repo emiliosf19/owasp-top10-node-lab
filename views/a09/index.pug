@@ -1,0 +1,14 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A09', 'Fallos de Registro y Alertas')
+  .card
+    .card-body
+      h5.card-title Concepto
+      p.card-text Sin logs útiles, los ataques son invisibles.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li Ve a #[a(href="/a09/login-bad") /a09/login-bad], inicia sesión (bien y mal). Abre #[a(href="/a09/view-logs") /a09/view-logs] → bad_app.log. ¿Aparecen contraseñas en texto plano?
+        li Repite en #[a(href="/a09/login-good") /a09/login-good] y compara ambos logs. ¿Cuál registra los fallos de seguridad?
+        li En #[a(href="/a09/transfer-bad") /a09/transfer-bad] ingresa un identificador de práctica. ¿Aparece completo en el log? Compara con #[a(href="/a09/transfer-good") /a09/transfer-good].

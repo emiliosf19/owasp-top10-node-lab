@@ -1,0 +1,14 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A03', 'Parser de YAML inseguro')
+  form(method="POST" action="/a03/parse-config")
+    .mb-3
+      label.form-label Configuración YAML
+      textarea.form-control(name="config" rows="6")= sample
+    button.btn.btn-primary(type="submit") Parsear
+  if error
+    .alert.alert-danger.mt-3= error
+  if result
+    pre.mt-3= result

@@ -1,0 +1,11 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A05', 'Utilidad de ping vulnerable a Command Injection')
+  form.mb-3(method="POST" action="/a05/ping")
+    .input-group
+      input.form-control(name="host" value=host placeholder="127.0.0.1; id")
+      button.btn.btn-primary(type="submit") Ping
+  if output
+    pre= output

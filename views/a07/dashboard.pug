@@ -1,0 +1,8 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A07', 'Panel')
+  p Sesión iniciada como #[strong= user.username] — session_id = #[code= sid]
+  a.btn.btn-outline-light.btn-sm(href="/a07/profile") Ver perfil (vía cookie) →
+  a.btn.btn-outline-secondary.btn-sm(href="/a07/logout") Cerrar sesión

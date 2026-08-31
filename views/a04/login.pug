@@ -1,0 +1,24 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A04', 'Login (comparación MD5)')
+  if result
+    if result.status === 'success'
+      .alert.alert-success
+        p Login correcto como #[strong= result.user]
+        p Nota secreta: #{result.secretNote}
+        p Token de sesión: #[code= result.sessionToken]
+        p.small.text-secondary= result.tokenNote
+    else
+      .alert.alert-danger= result.message
+  .card.mx-auto(style="max-width:420px")
+    .card-body
+      form(method="POST" action="/a04/login")
+        .mb-3
+          label.form-label Usuario
+          input.form-control(name="username" required)
+        .mb-3
+          label.form-label Contraseña
+          input.form-control(type="password" name="password" required)
+        button.btn.btn-primary.w-100(type="submit") Entrar

@@ -1,0 +1,27 @@
+mixin labHeader(id, title, solLink)
+  .d-flex.justify-content-between.align-items-center.mb-3
+    div
+      span.badge.bg-danger.me-2= id
+      span.h4= title
+    .d-flex.gap-2
+      a.btn.btn-sm.btn-outline-light(href=`/${id.toLowerCase()}/`) ← Índice del lab
+      a.btn.btn-sm.btn-outline-secondary(href=`/solutions/${id.toLowerCase()}`) Ver solución
+      a.btn.btn-sm.btn-outline-secondary(href="/") Todos los labs
+
+mixin codeBlock(text)
+  pre: code= text
+
+mixin resultAlert(type, message)
+  if message
+    .alert(class=`alert-${type}`)= message
+
+mixin challengeCard(id, title, url, badgeClass, desc)
+  .col-md-6
+    a.text-decoration-none(href=url)
+      .card.lab-card.h-100
+        .card-header.d-flex.justify-content-between.align-items-center
+          span.badge(class=`bg-${badgeClass}`)= id
+          small.text-secondary 2025
+        .card-body
+          h5.card-title= title
+          p.card-text.text-secondary.small= desc

@@ -1,0 +1,8 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A09', 'Ver logs')
+  each content, fname in logs
+    h6= fname
+    pre= content

@@ -1,0 +1,31 @@
+{
+  "name": "owasp-top10-node-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Laboratorio educativo OWASP Top 10:2025 — aplicación Node.js/Express deliberadamente vulnerable de proposito general.",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "seed": "node ./db/seed.js",
+    "test": "npx jest"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "config": "^3.3.12",
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.6",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "http-errors": "^2.0.0",
+    "js-yaml": "3.13.0",
+    "marked": "^12.0.2",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.3",
+    "winston": "^3.13.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
+  }
+}

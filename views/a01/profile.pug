@@ -1,0 +1,28 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A01', 'Perfil de usuario (IDOR)')
+  if currentUser
+    p.text-secondary Sesión activa como #[strong= currentUser.username]
+  .card
+    .card-header ID solicitado: #{user.id}
+    .card-body
+      table.table.table-sm
+        tbody
+          tr
+            td Usuario
+            td= user.username
+          tr
+            td Correo
+            td= user.email
+          tr
+            td Teléfono
+            td= user.phone
+          tr
+            td Identificación nacional (PII sensible)
+            td: code= user.national_id
+          tr
+            td Rol
+            td= user.role
+      p.text-secondary.small.mt-2 Prueba a cambiar el número en la URL: #[code /a01/profile/1], #[code /a01/profile/2], #[code /a01/profile/3].

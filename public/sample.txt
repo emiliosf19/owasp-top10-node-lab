@@ -1,0 +1,2 @@
+Este es un archivo estático de práctica para el lab A10 (path traversal).
+No contiene datos sensibles: sirve solo como archivo "esperado" por /a10/read-bad y /a10/read-good.

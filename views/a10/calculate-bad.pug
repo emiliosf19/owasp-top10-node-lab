@@ -1,0 +1,17 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A10', 'Calculadora (insegura)')
+  form.mb-3(method="POST" action="/a10/calculate-bad")
+    .row.g-2
+      .col-auto
+        input.form-control(name="a" placeholder="a" value="5")
+      .col-auto
+        input.form-control(name="b" placeholder="b" value="0")
+      .col-auto
+        button.btn.btn-primary(type="submit") Calcular
+  if result !== null
+    .alert.alert-success Resultado: #{result}
+  if error
+    pre.mt-2= error

@@ -1,0 +1,16 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A04', '"Cifrado" con base64')
+  form.mb-3(method="POST" action="/a04/store")
+    .mb-3
+      label.form-label Dato
+      input.form-control(name="data" placeholder="password=Admin123")
+    .btn-group
+      button.btn.btn-primary(type="submit" name="action" value="encode") Codificar
+      button.btn.btn-outline-light(type="submit" name="action" value="decode") Decodificar
+  if encoded
+    .alert.alert-info Codificado: #[code= encoded]
+  if decoded
+    .alert.alert-info Decodificado: #[code= decoded]

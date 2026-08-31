@@ -1,0 +1,19 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A05', 'Login vulnerable a SQL Injection')
+  if result
+    .alert(class=`alert-${result.status === 'success' ? 'success' : (result.status === 'error' ? 'warning' : 'danger')}`)= result.message
+    if result.query
+      pre.mt-2= result.query
+  .card.mx-auto(style="max-width:480px")
+    .card-body
+      form(method="POST" action="/a05/login")
+        .mb-3
+          label.form-label Usuario
+          input.form-control(name="username" value="admin")
+        .mb-3
+          label.form-label Contraseña
+          input.form-control(name="password" placeholder="' OR '1'='1")
+        button.btn.btn-primary.w-100(type="submit") Entrar

@@ -1,0 +1,21 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A01', 'Detalle de pedido (IDOR)')
+  p.text-secondary Sesión activa como #[strong= currentUser.username]
+  table.table.table-sm
+    tbody
+      tr
+        td ID de pedido
+        td= order.id
+      tr
+        td Pertenece a user_id
+        td= order.user_id
+      tr
+        td Artículo
+        td= order.item
+      tr
+        td Monto
+        td $#{order.amount.toFixed(2)}
+  a.btn.btn-outline-light.btn-sm(href="/a01/my-orders") Ver solo mis pedidos →

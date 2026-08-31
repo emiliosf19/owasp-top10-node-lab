@@ -1,0 +1,24 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A08', 'Actualización de software sin firma')
+  table.table.table-sm
+    tbody
+      tr
+        td version
+        td= manifest.version
+      tr
+        td url
+        td: code= manifest.url
+      tr
+        td sha256
+        td= manifest.sha256 === null ? 'null' : manifest.sha256
+      tr
+        td signature
+        td= manifest.signature === null ? 'null' : manifest.signature
+  form(method="POST" action="/a08/update")
+    input(type="hidden" name="version" value=manifest.version)
+    button.btn.btn-warning(type="submit") Aplicar actualización
+  if message
+    .alert.alert-warning.mt-3= message

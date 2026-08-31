@@ -1,0 +1,18 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A06', 'Carrito (cantidad negativa)')
+  +resultAlert('info', message)
+  form.mb-3(method="POST" action="/a06/cart")
+    .row.g-2
+      .col-auto
+        select.form-select(name="item")
+          each i in items
+            option(value=i.name)= `${i.name} — $${i.price}`
+      .col-auto
+        input.form-control(type="number" name="quantity" value="1")
+      .col-auto
+        button.btn.btn-primary(type="submit") Agregar
+  if total !== null
+    .alert.alert-warning Total calculado: $#{total.toFixed(2)}

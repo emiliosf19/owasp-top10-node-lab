@@ -1,0 +1,15 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A10', 'Manejo Incorrecto de Excepciones')
+  .card
+    .card-body
+      h5.card-title Concepto
+      p.card-text Los errores no manejados revelan la arquitectura interna del sistema.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li En #[a(href="/a10/calculate-bad") /a10/calculate-bad] ingresa #[code a=5, b=0]. ¿Qué ruta absoluta del servidor revela el stack trace? Compara con #[a(href="/a10/calculate-good") /a10/calculate-good].
+        li
+          | Navega a #[code /a10/read-bad?file=../../config/default.json] (agrega más #[code ../] si tu instalación está más anidada — o prueba con #[code ../../../../../../etc/passwd] para llegar a la raíz del sistema). ¿Qué revela el error o el contenido? Compara con la misma ruta en #[a(href="/a10/read-good") /a10/read-good].
+        li Ve a #[code /a10/query-bad?table=nonexistent] y luego #[code /a10/query-bad?table=a04_users]. ¿Qué datos expone el error SQL?

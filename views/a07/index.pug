@@ -1,0 +1,24 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A07', 'Fallos de Autenticación')
+  .card.mb-3
+    .card-body
+      h5.card-title Concepto
+      p.card-text Sin protección, cualquier contraseña puede adivinarse y cualquier sesión secuestrarse.
+      h6.text-secondary.text-uppercase.small Retos
+      ol
+        li
+          | Ejecuta en terminal para hacer fuerza bruta:
+          pre: code.
+            for pw in password 123456 sunshine admin123 qwerty iloveyou; do
+              curl -s -X POST http://localhost:3000/a07/login -d "username=alice&password=$pw" | grep -o 'success\|fail'
+            done
+        li Inicia sesión y observa tu #[code session_id] (es un entero). Modifica la cookie con el valor 1 o 2. ¿Puedes acceder a otra sesión?
+        li Inicia sesión con "Recordarme", abre DevTools → Cookies. ¿Qué contiene #[code remember_me]?
+        li Copia tu session_id, cierra sesión y ejecuta #[code curl -b "session_id=TU_VALOR" http://localhost:3000/a07/profile]. ¿Sigues autenticado?
+  .card
+    .card-header Sesiones activas en memoria (secuenciales)
+    .card-body
+      pre= JSON.stringify(sessions, null, 2)

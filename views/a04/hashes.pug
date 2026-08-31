@@ -1,0 +1,17 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A04', 'Hashes almacenados (MD5 sin sal)')
+  table.table.table-sm
+    thead
+      tr
+        th ID
+        th Usuario
+        th password_hash
+    tbody
+      each u in users
+        tr
+          td= u.id
+          td= u.username
+          td: code= u.password_hash

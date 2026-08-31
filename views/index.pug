@@ -1,0 +1,21 @@
+extends layout
+include mixins/lab.pug
+
+block content
+  .row.mb-4
+    .col
+      h1.h3 Lab OWASP Top 10:2025 — Seguridad Web con Node.js/Express
+      p.text-secondary.
+        Cada módulo contiene endpoints #[span.badge.bg-danger VULNERABLES] para explotar y entender la falla,
+        más una implementación #[span.badge.bg-success CORREGIDA] de referencia para comparar.
+        Es un laboratorio de propósito general: los ejemplos cubren e-commerce, autenticación,
+        administración interna, DevOps y utilidades de soporte — no un solo dominio de negocio.
+      .alert.alert-dark
+        strong Inicio rápido:&nbsp;
+        | la base de datos se reinicializa automáticamente al arrancar.
+        | Ejecuta #[code npm start] (o #[code npm run dev] con recarga en caliente).
+        | Las soluciones guiadas están en #[code solutions/] o en #[code /solutions/a01] … #[code /solutions/a10].
+
+  .row.g-3
+    each lab in labs
+      +challengeCard(lab.id, lab.title, lab.url, lab.color, lab.desc)

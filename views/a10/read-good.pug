@@ -1,0 +1,13 @@
+extends ../layout
+include ../mixins/lab.pug
+
+block content
+  +labHeader('A10', 'Lector de archivos (seguro)')
+  form.mb-3(method="GET" action="/a10/read-good")
+    .input-group
+      input.form-control(name="file" value=fileParam)
+      button.btn.btn-primary(type="submit") Leer
+  if content
+    pre= content
+  if error
+    .alert.alert-warning.mt-2= error
