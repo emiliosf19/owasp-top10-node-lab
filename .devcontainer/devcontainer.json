@@ -6,7 +6,8 @@
   "portsAttributes": {
     "3000": {
       "label": "OWASP Top 10:2025 Node Lab",
-      "onAutoForward": "openBrowser"
+      "onAutoForward": "notify",
+      "visibility": "public"
     }
   },
   "customizations": {

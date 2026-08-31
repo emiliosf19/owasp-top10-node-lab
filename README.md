@@ -12,8 +12,27 @@
 
 ### GitHub Codespaces (recomendado)
 1. Abre este repositorio en GitHub Codespaces.
-2. El devcontainer instala las dependencias y siembra la base de datos automáticamente.
-3. El puerto 3000 se abrirá en tu navegador — a explotar.
+2. El devcontainer instala las dependencias y siembra la base de datos automáticamente
+   (pero **no** arranca el servidor por sí solo).
+3. En la terminal integrada ejecuta `npm start`. Espera a ver
+   `[+] OWASP Top 10:2025 Node Lab escuchando en http://localhost:3000`.
+4. Abre la pestaña **Ports**: el puerto 3000 debería aparecer como `Running`. Haz clic en
+   el ícono del globo (🌐) para abrirlo en una pestaña completa del navegador.
+
+#### El puerto sale como "Private" y no abre / carga en blanco
+- Lo más frecuente es que el servidor todavía no esté corriendo — Codespaces detecta y
+  abre el puerto en cuanto algo empieza a escuchar en él, así que si abres el navegador
+  antes de correr `npm start` verás una página en blanco o de error. Corre `npm start`
+  primero y recarga.
+- "Private" es la visibilidad **por defecto** de Codespaces; no es un error. Como dueño
+  del Codespace puedes abrirlo igual estando autenticado con la misma cuenta de GitHub en
+  el navegador. Si el preview embebido de VS Code da problemas (cookies/iframe), ábrelo en
+  una pestaña normal del navegador en vez del "Simple Browser".
+- Si prefieres quitar esa fricción para el lab, clic derecho sobre la fila del puerto 3000
+  en la pestaña **Ports** → **Port Visibility** → **Public**.
+- Si `npm start` truena con un error al arrancar, revisa la terminal: `better-sqlite3` es
+  un módulo nativo y en arquitecturas poco comunes puede fallar su instalación — en ese
+  caso corre `npm rebuild better-sqlite3` y vuelve a intentar.
 
 ### Local
 ```bash
