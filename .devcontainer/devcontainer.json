@@ -1,12 +1,13 @@
 {
   "name": "owasp-top10-node-lab",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
-  "postCreateCommand": "npm install && npm run seed",
+  "postCreateCommand": "npm install",
+  "postStartCommand": "nohup npm start > /tmp/owasp-node-lab.log 2>&1 &",
   "forwardPorts": [3000],
   "portsAttributes": {
     "3000": {
       "label": "OWASP Top 10:2025 Node Lab",
-      "onAutoForward": "notify",
+      "onAutoForward": "openBrowser",
       "visibility": "public"
     }
   },

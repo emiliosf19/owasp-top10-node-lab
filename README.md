@@ -12,27 +12,31 @@
 
 ### GitHub Codespaces (recomendado)
 1. Abre este repositorio en GitHub Codespaces.
-2. El devcontainer instala las dependencias y siembra la base de datos automáticamente
-   (pero **no** arranca el servidor por sí solo).
-3. En la terminal integrada ejecuta `npm start`. Espera a ver
-   `[+] OWASP Top 10:2025 Node Lab escuchando en http://localhost:3000`.
-4. Abre la pestaña **Ports**: el puerto 3000 debería aparecer como `Running`. Haz clic en
-   el ícono del globo (🌐) para abrirlo en una pestaña completa del navegador.
+2. El devcontainer instala las dependencias (`postCreateCommand`) y arranca el servidor
+   automáticamente cada vez que el Codespace inicia o se reanuda (`postStartCommand`) —
+   no necesitas escribir `npm start` a mano.
+3. Cuando el puerto 3000 esté listo, Codespaces te ofrecerá abrirlo en el navegador
+   automáticamente (o ábrelo tú desde la pestaña **Ports**, ícono del globo 🌐).
+
+Si el arranque automático no aplica (por ejemplo, en un Codespace creado antes de este
+cambio), corre manualmente `> Codespaces: Rebuild Container` desde la paleta de comandos
+de VS Code — los cambios a `.devcontainer/devcontainer.json` solo toman efecto tras un
+rebuild, no con solo reabrir el Codespace.
 
 #### El puerto sale como "Private" y no abre / carga en blanco
-- Lo más frecuente es que el servidor todavía no esté corriendo — Codespaces detecta y
-  abre el puerto en cuanto algo empieza a escuchar en él, así que si abres el navegador
-  antes de correr `npm start` verás una página en blanco o de error. Corre `npm start`
-  primero y recarga.
+- Revisa si el servidor realmente está corriendo: `cat /tmp/owasp-node-lab.log` (ahí queda
+  la salida de `npm start` lanzado por `postStartCommand`). Debe aparecer
+  `[+] OWASP Top 10:2025 Node Lab escuchando en http://localhost:3000`.
 - "Private" es la visibilidad **por defecto** de Codespaces; no es un error. Como dueño
   del Codespace puedes abrirlo igual estando autenticado con la misma cuenta de GitHub en
   el navegador. Si el preview embebido de VS Code da problemas (cookies/iframe), ábrelo en
   una pestaña normal del navegador en vez del "Simple Browser".
-- Si prefieres quitar esa fricción para el lab, clic derecho sobre la fila del puerto 3000
-  en la pestaña **Ports** → **Port Visibility** → **Public**.
-- Si `npm start` truena con un error al arrancar, revisa la terminal: `better-sqlite3` es
-  un módulo nativo y en arquitecturas poco comunes puede fallar su instalación — en ese
-  caso corre `npm rebuild better-sqlite3` y vuelve a intentar.
+- Si prefieres forzarlo a público, clic derecho sobre la fila del puerto 3000 en la
+  pestaña **Ports** → **Port Visibility** → **Public** (el devcontainer ya lo declara
+  público por defecto, pero eso solo aplica desde la creación del Codespace).
+- Si el log muestra un error al arrancar: `better-sqlite3` es un módulo nativo y en
+  arquitecturas poco comunes puede fallar su instalación — corre
+  `npm rebuild better-sqlite3` y luego `npm start` a mano para reintentar.
 
 ### Local
 ```bash
