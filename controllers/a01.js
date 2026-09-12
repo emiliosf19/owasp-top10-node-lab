@@ -34,8 +34,11 @@ function logout(req, res) {
 // ── VULNERABLE: no verifica que el usuario en sesión sea el dueño del perfil ──
 function profile(req, res) {
   const userId = Number(req.params.userId);
+  const current = req.session.a01User;
+  if (!current || (current.id !== userId && current.role !== 'admin')) {
+    return res.status(403).send('Prohibido');
+  }
   const db = getDb();
-  // BUG: obtiene cualquier userId sin comparar contra session.a01User.id
   const user = db.prepare('SELECT * FROM a01_users WHERE id = ?').get(userId);
   if (!user) return res.status(404).send('Usuario no encontrado');
   res.render('a01/profile', { title: 'A01 · Perfil', user, currentUser: req.session.a01User || null });
@@ -43,7 +46,8 @@ function profile(req, res) {
 
 // ── VULNERABLE: no hay verificación de role === 'admin' ──────────────────────
 function admin(req, res) {
-  // BUG: solo exige estar autenticado, no exige rol admin
+  const user = req.session.a01User;
+  if (!user || user.role !== 'admin') return res.status(403).send('Prohibido');
   if (!req.session.a01User) return res.redirect('/a01/login');
   const db = getDb();
   const users = db.prepare('SELECT * FROM a01_users').all();
@@ -55,6 +59,7 @@ function order(req, res) {
   const orderId = Number(req.params.orderId);
   if (!req.session.a01User) return res.redirect('/a01/login');
   const db = getDb();
+  if (!order.user_id !== session.a01User.id) return res.status(403).send('Prohibido');
   // BUG: cualquier usuario autenticado puede ver cualquier pedido
   const row = db.prepare('SELECT * FROM a01_orders WHERE id = ?').get(orderId);
   if (!row) return res.status(404).send('Pedido no encontrado');
