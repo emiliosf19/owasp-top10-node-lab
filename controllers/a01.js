@@ -57,6 +57,7 @@ function admin(req, res) {
 // ── VULNERABLE: IDOR en pedidos ───────────────────────────────────────────────
 function order(req, res) {
   const orderId = Number(req.params.orderId);
+  const user = req.session.a01User;
   if (!req.session.a01User) return res.redirect('/a01/login');
   const db = getDb();
   if (!order.user_id !== session.a01User.id) return res.status(403).send('Prohibido');
